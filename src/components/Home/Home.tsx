@@ -2,6 +2,7 @@ import React from 'react';
 import { styled } from '@mui/system';
 import { Button } from '@mui/material';
 import golfball from '../assets/images/golfball.jpg';
+import golfwoman from '../assets/images/golfwoman.jpg';
 import { Link } from 'react-router-dom';
 
 interface Props{
@@ -16,27 +17,31 @@ const NavbarContainer = styled('div')( {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
+    backgroundColor: 'black', 
+    opacity: '0.75',
 })
 const Logo = styled('h1')({
-    margin: '0 0 0 0.45em'
+    margin: '0 0 0 0.45em',
+
 })
 const LogoA = styled(Link)( {
-    color: 'rgb(28,24,22)',
+    color: '#96CEC1',
     listStyle: 'none',
-    textTransform: 'uppercase',
-    textDecoration: 'none'
+    textDecoration: 'none', 
+    fontFamily: 'OleoScriptSwashCaps-Regular'
 })
 const LogoNavigation = styled('ul')( {
     listStyle: 'none',
-    textTransform: 'uppercase',
     textDecoration: 'none',
-    display: 'flex'
+    textTransform: 'uppercase',
+    display: 'flex',
+    fontFamily: 'times',
 })
 
 const NavA = styled(Link)({
     display: 'block',
     padding: '1em',
-    color: 'black'
+    color: '#8EC2B7',
 })
 const Main = styled('main')( {
     backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${golfball});`,
@@ -45,6 +50,7 @@ const Main = styled('main')( {
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
+    backgroundAttachment: 'fixed',
     position: 'absolute',
 })
 const MainText = styled('div')({
@@ -53,8 +59,13 @@ const MainText = styled('div')({
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    color: 'white'
+    fontFamily: 'OleoScriptSwashCaps-Regular',
+    color: '#96CEC1',
 })
+
+
+
+
 
 export const Home = ( props:Props) => {
  
@@ -62,28 +73,28 @@ export const Home = ( props:Props) => {
         <Root>
             <NavbarContainer>
                 <Logo>
-                    <LogoA to="/">The Perfect Swing</LogoA>
+                    <LogoA to="/">the perfect swing</LogoA>
                 </Logo>
                 <LogoNavigation>
                     <li>
-                        <NavA to="/">Home</NavA>
+                        <NavA to="/">home</NavA>
                     </li>
                     <li>
-                        <NavA to="/dashboard">Dashboard</NavA>
+                        <NavA to="/dashboard">dashboard</NavA>
                     </li>
                     <li>
-                        <NavA to="signin">Sign In</NavA>
+                        <NavA to="signin">sign in</NavA>
                     </li>
                 </LogoNavigation>
             </NavbarContainer>
             <Main>
                 <MainText>
                     <h1>{props.title}</h1>
-                    <p>Virtual Golfclub Bag</p>
-                    <Button color='primary' variant='contained'>golf clubs here</Button>
+                    <p> virtual golf bag </p>
+                    <Button variant='contained'>golf clubs here</Button>
                 </MainText>
             </Main>
-
         </Root>
     )
 }
+
