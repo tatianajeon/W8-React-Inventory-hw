@@ -6,20 +6,28 @@ import { ThemeProvider } from '@mui/material/styles';
 import { theme } from './Theme/themes';
 import { Home, Dashboard, Signin, DataTable } from './components';
 import '../src/styles.css'
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme = {theme}>
-      <Router>
-        <Routes>
-          <Route path='/' element={<Home title = {'th perfect swing'} />}/>
-          <Route path='/dashboard' element={<Dashboard />}/>
-          <Route path='/signin' element={<Signin/>}/>
-        </Routes>
-      </Router>
-    </ThemeProvider>
-  </React.StrictMode>
+    <Provider store = {store}>   
+
+        <ThemeProvider theme={theme}>
+          <Router>
+            <Routes>
+              <Route path='/' element={<Home title = {'Drones Inventory'}/>} />
+              <Route path='/dashboard' element={<Dashboard />} />
+              <Route path='/signin' element={<Signin />} />
+            </Routes>
+          </Router>
+        </ThemeProvider>
+
+    </Provider>             
+  </React.StrictMode>,
 );
+
+reportWebVitals();

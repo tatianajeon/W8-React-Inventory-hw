@@ -10,17 +10,21 @@ import { Drawer as MUIDrawer,
     Divider,
     Button,
     CssBaseline, 
-    Box
+    Box, 
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogContentText,
+    DialogTitle,
 } from "@mui/material";
 import MenuIcon  from '@mui/icons-material/Menu';
 import { ChevronRight,ChevronLeft } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { theme } from "../../Theme/themes";
-import { DataTable } from '../../components';
+import { DataTable, GolfForm } from '../../components';
 import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 import DoorBackIcon from '@mui/icons-material/DoorBack';
-
-// import Box from '@mui/joy/Box';
+import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import Add from '@mui/icons-material/Add';
 
 
@@ -102,6 +106,7 @@ const myStyles = {
 export const Dashboard =() =>{
     const navigate = useNavigate();
     const [open, setOpen] = useState(false)
+    const [dialogOpen, setDialogOpen] = useState(false);
 
     const handleDrawerOpen = () => {
         setOpen(true)
@@ -109,6 +114,14 @@ export const Dashboard =() =>{
     const handleDrawerClose = () => {
         setOpen(false)
     }
+
+  const handleDialogOpen = () => {
+    setDialogOpen(true);
+  }
+  const handleDialogClose = () => {
+    setDialogOpen(false);
+  }
+
 
     const itemsList = [
         {
@@ -144,6 +157,24 @@ export const Dashboard =() =>{
                                 <MenuIcon/>
                             </IconButton>
                         <Typography variant='h6' noWrap>Dashboard </Typography>
+
+
+                        <Button sx={myStyles.toolbar_button} onClick={handleDialogOpen}>Add new golf club</Button>
+
+
+                        <Dialog open={dialogOpen} onClose={handleDialogClose} aria-labelledby="form-dialog-title">
+                            <DialogTitle id="form-dialog-title">Add New Club</DialogTitle>
+                                <DialogContent>
+                                    <DialogContentText>Add A New Club</DialogContentText>
+                                    <GolfForm />
+                                </DialogContent>
+                            <DialogActions>
+                                <Button onClick = {handleDialogClose} color="primary">Cancel</Button>
+                            </DialogActions>
+
+                        </Dialog>
+
+
                         <Button sx={myStyles.toolbar_button}>Add golfclub to bag</Button>
                     </Toolbar>
             </AppBar>
